@@ -16,8 +16,8 @@ class Field
   //std::vector<int> BitsetToInts(std::bitset<10> bs) const;
 
  private:
+  static int constexpr m_fieldSize = 81;
   std::vector<NumberSet> m_storage; //123456789
-  int const m_fieldSize = 81;
 };
 
 #endif // FIELD_H

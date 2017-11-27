@@ -8,7 +8,7 @@ bool NumberSet::isEmpty() const
 {
   /*std::bitset<9> empty;
   return (m_set == empty);*/
-  if (m_set.count == 0) {
+  if (m_set.count() == 0) {
     return true;
   }
   return false;
