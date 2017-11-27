@@ -6,13 +6,20 @@ NumberSet::~NumberSet() {}
 
 bool NumberSet::isEmpty() const
 {
-  std::bitset<9> empty;
-  return (m_set == empty);
+  /*std::bitset<9> empty;
+  return (m_set == empty);*/
+  if (m_set.count == 0) {
+    return true;
+  }
+  return false;
 }
 
 void NumberSet::add(int x) 
 {
-  m_set[x] = true;
+  std::cout << "NS: adding" << std::endl;
+  std::cout << "b:" << m_set << "\nx:" << x << std::endl;
+  m_set[x] = true;  //TODO WHY U TROW SEGMENTATION FAULT
+  std::cout << "-NS: added" << std::endl;
 }
 
 void NumberSet::remove(int x)

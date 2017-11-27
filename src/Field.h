@@ -9,6 +9,7 @@ class Field
 {
  public:
   Field();
+  Field(std::string s);
   ~Field();
   void print() const;
   void fillRand(int seed);

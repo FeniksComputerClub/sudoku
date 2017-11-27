@@ -17,13 +17,18 @@ class Field {
 
 Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a new Vector of (x many, y's)
 {  //Constructor
-  //DEBUG   std::cout << "Field Constructing" << std::endl;
-  //DEBUG   std::cout << "Field Constructed" << std::endl;
+  std::cout << "Field Constructing" << std::endl;
+  std::cout << "-Field Constructed" << std::endl;
 }
 
 Field::Field(std::string s) : m_storage(m_fieldSize, NumberSet()) //FOR DEBUG PURPOSES ONLY
 {
-  for (int i = 0; //TODO)  //TODO MAKE A FIELD WITH THE NUMBERS IN STRING FOR TESTING PURPOSES
+  std::cout << "Field Constructing from string" << std::endl;
+  int foo=0; //PLACEHOLDER
+  for (int i=0; i<m_fieldSize; ++i) {  //TODO MAKE A FIELD WITH THE NUMBERS IN STRING FOR TESTING PURPOSES
+    foo += 1;
+  }
+  std::cout << "-Field constructed from string" << std::endl;
 }
 
 Field::~Field()
@@ -35,7 +40,7 @@ Field::~Field()
 
 void Field::print() const
 {
-  //DEBUG   std::cout << "print" << std::endl;
+  std::cout << "print" << std::endl;
   for (int i=0; i<m_fieldSize; ++i) { //TODO make print stuff that converts bitset to int //TODO ascii-graphics
 #if 0
     if !(m_storage.count() > 1) { //if there is only one int stored here
@@ -65,17 +70,20 @@ void Field::print() const
     }
   }
   //DEBUG   std::cout << m_storage[5] << std::endl;
-  //DEBUG   std::cout << "printed" << std::endl;
+  std::cout << "-print" << std::endl;
 }
 
 void Field::fillRand(int seed)
 {
+  std::cout << "fillRand" << std::endl;
   std::srand(seed);
   for (int i=0; i<m_fieldSize; ++i) {
     int r = std::rand()%9;
+    std::cout << r << std::endl;
     m_storage[i].add(r);
     //DEBUG std::cout << r << " " << m_storage[i].print() << std::endl;
-  void print();//TODO
+  std::cout << "-fillRand" << std::endl;
+  //void print();//TODO
   }
 }
 
