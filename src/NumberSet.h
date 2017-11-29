@@ -15,6 +15,7 @@ class NumberSet
   void remove(int x);
   bool test(int loc) const;
   void print() const;
+  void printRaw() const;
  private:
   std::bitset<9> m_set;
 };
