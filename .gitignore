@@ -1,0 +1,11 @@
+obj
+obj/*
+src.old
+src.old/*
+\\
+a.out
+out
+Hirarchy.txt
+.git/*
+.git
+*.swp
