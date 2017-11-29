@@ -65,7 +65,7 @@ void Field::print() const
 #endif
     m_storage[i].print();
     //DEBUG   std::cout << "!" << std::endl;
-    if (i%9==0) {
+    if ((i+1)%9==0) {
       std::cout << std::endl;
     }
   }
