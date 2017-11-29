@@ -1,4 +1,5 @@
 #include "NumberSet.h"
+#include "Debug.h"
 
 NumberSet::NumberSet() {}
 
@@ -16,10 +17,10 @@ bool NumberSet::isEmpty() const
 
 void NumberSet::add(int x) 
 {
-  std::cout << "NS: adding" << std::endl;
-  std::cout << "b:" << m_set << "\nx:" << x << std::endl;
+  if (DEBUG) {std::cout << "NS: adding" << std::endl;}
+  if (DEBUG) {std::cout << "b:" << m_set << "\nx:" << x << std::endl;}
   m_set[x] = true;  //TODO WHY U TROW SEGMENTATION FAULT
-  std::cout << "-NS: added" << std::endl;
+  if (DEBUG) {std::cout << "-NS: added" << std::endl;}
 }
 
 void NumberSet::remove(int x)

@@ -1,6 +1,6 @@
 #include "Field.h"
 #include <iostream>
-
+#include "Debug.h"
 #if 0
 class Field {
  public:
@@ -17,18 +17,18 @@ class Field {
 
 Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a new Vector of (x many, y's)
 {  //Constructor
-  std::cout << "Field Constructing" << std::endl;
-  std::cout << "-Field Constructed" << std::endl;
+  if (DEBUG) {std::cout << "Field Constructing" << std::endl;}
+  if (DEBUG) {std::cout << "-Field Constructed" << std::endl;}
 }
 
 Field::Field(std::string s) : m_storage(m_fieldSize, NumberSet()) //FOR DEBUG PURPOSES ONLY
 {
-  std::cout << "Field Constructing from string" << std::endl;
+  if (DEBUG) {std::cout << "Field Constructing from string" << std::endl;}
   int foo=0; //PLACEHOLDER
   for (int i=0; i<m_fieldSize; ++i) {  //TODO MAKE A FIELD WITH THE NUMBERS IN STRING FOR TESTING PURPOSES
     foo += 1;
   }
-  std::cout << "-Field constructed from string" << std::endl;
+  if (DEBUG) {std::cout << "-Field constructed from string" << std::endl;}
 }
 
 Field::~Field()
@@ -40,8 +40,8 @@ Field::~Field()
 
 void Field::print() const
 {
-  std::cout << "print" << std::endl;
-  for (int i=0; i<m_fieldSize; ++i) { //TODO make print stuff that converts bitset to int //TODO ascii-graphics
+  if (DEBUG) {std::cout << "print" << std::endl;}
+  for (int i=0; i<m_fieldSize; ++i) { //TODO BUG: first digit on the field/baord isn't printed correctly  //TODO ascii-graphics
 #if 0
     if !(m_storage.count() > 1) { //if there is only one int stored here
       
@@ -70,21 +70,21 @@ void Field::print() const
     }
   }
   //DEBUG   std::cout << m_storage[5] << std::endl;
-  std::cout << "-print" << std::endl;
+  if (DEBUG) {std::cout << "-print" << std::endl;}
 }
 
 void Field::fillRand(int seed)
 {
-  std::cout << "fillRand" << std::endl;
+  if (DEBUG) {std::cout << "fillRand" << std::endl;}
   std::srand(seed);
   for (int i=0; i<m_fieldSize; ++i) {
     int r = std::rand()%9;
-    std::cout << r << std::endl;
+    if (DEBUG) {std::cout << r << std::endl;}
     m_storage[i].add(r);
     //DEBUG std::cout << r << " " << m_storage[i].print() << std::endl;
-  std::cout << "-fillRand" << std::endl;
-  //void print();//TODO
   }
+  if (DEBUG) {std::cout << "-fillRand" << std::endl;}
+  //void print();//TODO
 }
 
 #if 0
