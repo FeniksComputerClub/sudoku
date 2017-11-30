@@ -51,8 +51,8 @@ void Field::print() const
       if ((i+1)%9==0) { std::cout << std::endl; } //Field Edge (Right) Return
       //DEBUG std::cout << "i:" << i << " %3:" << i%3 << " %9:" << i%9 << " ";
       //DEBUG std::cout << "%9:" << i%9 << " ";
-      if ( ((i+1)%3==0) && not((i)%9==8) ) { std::cout << "| "; } //Vertical Seperators
-      //TODO REMOVE if ((i% (m_fieldSize/3) ==((m_fieldSize/3)-1) ) && !(i==0 || i==m_fieldSize+1)) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; } //Horizontal Seperators (if current_proccessed_nummer (i) is devidable by (totalSize / 3) (and you are not at the top of the Field) then print seperator)
+      if ( ((i+1)%3==0) && not((i)%9==8) ) { std::cout << "| "; }   //Vertical Seperators
+      if ( ((y+1)%3==0) && x==m_fieldWidth-1 && i!=(m_fieldSize-1) ) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; }   //Horizontal Seperators
     }
   }
   //DEBUG   std::cout << m_storage[5] << std::endl;
