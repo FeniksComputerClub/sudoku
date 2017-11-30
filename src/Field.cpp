@@ -40,36 +40,20 @@ Field::~Field()
 
 void Field::print() const
 {
+  int i=0;
   if (DEBUG) {std::cout << "print" << std::endl;}
-  for (int i=0; i<m_fieldSize; ++i) {
-#if 0
-    if !(m_storage.count() > 1) { //if there is only one int stored here
-      
-    } else {
-      
+  //for (int i=0; i<m_fieldSize; ++i) {
+  for (int y=0; y<m_fieldHeight; ++y) {
+    for (int x=0; x<m_fieldWidth; ++x) {
+      i=(y*m_fieldWidth)+x;
+      m_storage[i].print();
+      std::cout << " ";
+      if ((i+1)%9==0) { std::cout << std::endl; } //Field Edge (Right) Return
+      //DEBUG std::cout << "i:" << i << " %3:" << i%3 << " %9:" << i%9 << " ";
+      //DEBUG std::cout << "%9:" << i%9 << " ";
+      if ( ((i+1)%3==0) && not((i)%9==8) ) { std::cout << "| "; } //Vertical Seperators
+      //TODO REMOVE if ((i% (m_fieldSize/3) ==((m_fieldSize/3)-1) ) && !(i==0 || i==m_fieldSize+1)) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; } //Horizontal Seperators (if current_proccessed_nummer (i) is devidable by (totalSize / 3) (and you are not at the top of the Field) then print seperator)
     }
-#endif
-#if 0 //PRE NUMBERSET
-    std::vector<int> values = BitsetToInts(m_storage[i]);
-    if (m_storage[i].count() != 0) { // if space occupied //TODO what if the value of this tile is 1'000'000'000 (thus 0)
-      for (unsigned int loc=0; loc<values.size(); ++loc) { //for (auto val: values) {
-        if (values[loc]!=0) {
-          std::cout << values[loc]; //std::cout << val;
-        }
-      }
-    } else {
-      std::cout << "x";
-    }
-    //DEBUG   std::cout << " ";
-    //DEBUG   std::cout << "i:" << m_storage[i];
-#endif
-    m_storage[i].print();
-    std::cout << " ";
-    if ((i+1)%9==0) { std::cout << std::endl; } //Field Edge (Right) Return
-    //DEBUG std::cout << "i:" << i << " %3:" << i%3 << " %9:" << i%9 << " ";
-    //DEBUG std::cout << "%9:" << i%9 << " ";
-    if ( ((i+1)%3==0) && not((i)%9==8) ) { std::cout << "| "; } //Vertical Seperators
-    //TODO REMOVE if ((i% (m_fieldSize/3) ==((m_fieldSize/3)-1) ) && !(i==0 || i==m_fieldSize+1)) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; } //Horizontal Seperators (if current_proccessed_nummer (i) is devidable by (totalSize / 3) (and you are not at the top of the Field) then print seperator)
   }
   //DEBUG   std::cout << m_storage[5] << std::endl;
   if (DEBUG) {std::cout << "-print" << std::endl;}

@@ -12,6 +12,8 @@ all: $(OBJ_FILES)
 #When calling "make all", first make the required *.o files
 	$(CXX) $(CXXFLAGS) $(OBJ_FILES) -o out
 #Compiler Flags (all required *.o files) -(output) path:"./out"
+	./out
+#Run Compiled Program
 
 clean:
 #When calling "make clean", remove all *.o files, and remove the executable
