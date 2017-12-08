@@ -8,11 +8,12 @@
 class Field
 {
  public:
-  Field();
+  Field();  //Default constructor (Needed because else it's only implied to exist when creating a new instance of Field, which the compiler doesn't seem to like)
   Field(std::string s);
   ~Field();
   void print() const;
   void fillRand(int seed);
+  bool isLegal(); //TODO test to see if the current state of the Field is allowed or is unacceptable
   //std::vector<int> BitsetToInts(std::bitset<10> bs) const;
 
  private:

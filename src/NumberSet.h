@@ -8,16 +8,17 @@
 class NumberSet
 {
  public:
-  NumberSet();
-  ~NumberSet();
   bool isEmpty() const;
   void add(int x);
   void remove(int x);
   bool test(int loc) const;
   void print() const;
   void printRaw() const;
+  std::vector<int> getContents() const; //TODO WIP
+
  private:
-  std::bitset<9> m_set;
+  std::bitset<9> m_set; // Least significant bit represents a '1' till most significant bit a '9'.
+                        // A number is in the set when its bit is set.
 };
 
 #endif
