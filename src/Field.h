@@ -8,8 +8,8 @@
 class Field
 {
  public:
-  Field();  //Default constructor (Needed because else it's only implied to exist when creating a new instance of Field, which the compiler doesn't seem to like)
-  Field(std::string s);
+  Field();  // Default constructor (Needed because else it's only implied to exist when creating a new instance of Field, which the compiler doesn't seem to like)
+  Field(std::string s); //TODO
   ~Field();
   void print() const;
   void fillRand(int seed);

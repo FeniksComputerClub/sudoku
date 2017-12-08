@@ -14,7 +14,7 @@ class NumberSet
   bool test(int loc) const;
   void print() const;
   void printRaw() const;
-  std::vector<int> getContents() const; //TODO WIP
+  std::vector<int> getContents() const;
 
  private:
   std::bitset<9> m_set; // Least significant bit represents a '1' till most significant bit a '9'.
