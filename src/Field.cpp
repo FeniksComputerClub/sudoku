@@ -32,9 +32,7 @@ void Field::print() const
   for (int y = 0; y < m_fieldHeight; ++y) {
     for (int x = 0; x < m_fieldWidth; ++x) {
       loc = y * m_fieldWidth + x;
-      std::cout << m_storage[loc];
-      //m_storage[loc].print();
-      std::cout << " ";
+      std::cout << m_storage[loc] << " ";
       if ( (loc + 1) % 9 == 0) { std::cout << std::endl; } // Field Edge (Right) Return
       if ( (loc + 1) % 3 == 0 && not(loc % 9 == 8) ) { std::cout << "| "; }   // Vertical Seperators
       if ( (y + 1) % 3 == 0 && x == m_fieldWidth - 1 && loc != m_fieldSize - 1 ) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; }   // Horizontal Seperators
@@ -51,11 +49,7 @@ void Field::fillRand(int seed)
     int r = (std::rand() % 9) + 1; //+1 because else you are making zeroes possible in a sudoku (which they (usualy) aren't)
     if (DEBUG) {std::cout << "r:" << r << std::endl;}
     m_storage[i].add(r);
-    if (DEBUG) {
-      std::cout << r << " ";
-      m_storage[i].print();
-      std::cout << std::endl;
-    }
+    if (DEBUG) {std::cout << r << " " << m_storage[i] << std::endl;}
   }
   if (DEBUG) {std::cout << "-fillRand" << std::endl;}
 }

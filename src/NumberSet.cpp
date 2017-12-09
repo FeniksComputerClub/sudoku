@@ -30,38 +30,17 @@ bool NumberSet::test(int loc) const
   return m_set[loc]; //TODO This might throw future bug, depending on implementation (somthing to do with things being off by 1)
 }
 
-void NumberSet::print() const
-{
-  if (DEBUG) {std::cout << "NumberSet print called!\n b:" << m_set << std::endl;}
-  if (!isEmpty()) { // If not empty
-    /*for (unsigned int i = 0; i < m_set.size(); ++i) {
-      if (m_set[i]) { //get "active" content (1's)
-        std::cout << i+1; //print
-      /
-    }*/
-    for (auto val : /*vector*/ getContents()) { // For each number in NumberSet
-      if (val != 0) {                           //  Ignore zeroes
-        std::cout << val;                       //   Output that number
-      }
-    }
-  } else { // If empty
-    std::cout << '*'; // Print empty char
-  } 
-}
-
-void NumberSet::printRaw() const
-{
-  std::cout << m_set << ":";
-  print();
-  std::cout << std::endl;
-}
-
 std::ostream& operator<<(std::ostream& os, NumberSet const& ns)
 {
-  if (DEBUG) {
-    ns.printRaw();
+  if (DEBUG) {os << ns.m_set << ":";}
+  if (ns.isEmpty()) { // If empty
+    os << '*';        // Print empty char
   } else {
-    ns.print();
+    for (auto val : /*vector*/ ns.getContents()) {  // For each number in NumberSet
+      if (val != 0) {                               //  Ignore zeroes
+        os << val;                                  //   Output that number
+      }
+    }
   }
   return os;
 }

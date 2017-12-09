@@ -12,8 +12,6 @@ class NumberSet
   void add(int x);
   void remove(int x);
   bool test(int loc) const;
-  void print() const;
-  void printRaw() const;
   friend std::ostream& operator<<(std::ostream& os, NumberSet const& ns);
   std::vector<int> getContents() const;
 
