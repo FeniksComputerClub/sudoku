@@ -27,16 +27,14 @@ Field::~Field()
 
 void Field::print() const
 {
-  int loc = 0;
   if (DEBUG) {std::cout << "print" << std::endl;}
   for (int y = 0; y < m_fieldHeight; ++y) {
     for (int x = 0; x < m_fieldWidth; ++x) {
-      loc = y * m_fieldWidth + x;
-      std::cout << m_storage[loc] << " ";
-      if ( (loc + 1) % 9 == 0) { std::cout << std::endl; } // Field Edge (Right) Return
-      if ( (loc + 1) % 3 == 0 && not(loc % 9 == 8) ) { std::cout << "| "; }   // Vertical Seperators
-      if ( (y + 1) % 3 == 0 && x == m_fieldWidth - 1 && loc != m_fieldSize - 1 ) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; }   // Horizontal Seperators
+      std::cout << get2D(x,y) << " ";
+      if ( (x + 1) % 3 == 0 && x + 1 != m_fieldWidth ) { std::cout << "| "; }   // Vertical Seperators (print after 3 NumberSets (except for the last column))
     }
+    std::cout << std::endl;
+    if ( (y + 1) % 3 == 0 && y + 1 != m_fieldHeight ) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; }   // Horizontal Seperator
   }
   if (DEBUG) {std::cout << "-print" << std::endl;}
 }
@@ -54,6 +52,7 @@ void Field::fillRand(int seed)
   if (DEBUG) {std::cout << "-fillRand" << std::endl;}
 }
 
-//TODO get(x,y) from storage
-//TODO add 2D function (or 2DField Class)
-//2D() returns vector(9*9) of m_storage
+NumberSet Field::get2D(int x, int y) const
+{
+  return m_storage[y * m_fieldWidth + x];
+}

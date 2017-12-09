@@ -14,7 +14,7 @@ class Field
   void print() const;
   void fillRand(int seed);
   bool isLegal(); //TODO test to see if the current state of the Field is allowed or is unacceptable
-  //std::vector<int> BitsetToInts(std::bitset<10> bs) const;
+  NumberSet get2D(int x, int y) const; // Used to interface with the (1D vector) m_storage as if it were 2D /*TODO*/ maybe return pointers so it can be used to interface 2 way
 
  private:
   static int constexpr m_fieldWidth = 9;
