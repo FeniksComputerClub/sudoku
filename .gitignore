@@ -2,6 +2,8 @@ obj
 obj/*
 src.old
 src.old/*
+src.backup
+src.backup/*
 \\
 a.out
 out

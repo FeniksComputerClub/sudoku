@@ -14,6 +14,7 @@ class NumberSet
   bool test(int loc) const;
   void print() const;
   void printRaw() const;
+  friend std::ostream& operator<<(std::ostream& os, NumberSet const& ns);
   std::vector<int> getContents() const;
 
  private:

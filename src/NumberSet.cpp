@@ -56,6 +56,16 @@ void NumberSet::printRaw() const
   std::cout << std::endl;
 }
 
+std::ostream& operator<<(std::ostream& os, NumberSet const& ns)
+{
+  if (DEBUG) {
+    ns.printRaw();
+  } else {
+    ns.print();
+  }
+  return os;
+}
+
 std::vector<int> NumberSet::getContents() const
 {
   std::vector<int> content(9, 0); // Make empty vector

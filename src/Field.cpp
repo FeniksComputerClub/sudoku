@@ -32,7 +32,8 @@ void Field::print() const
   for (int y = 0; y < m_fieldHeight; ++y) {
     for (int x = 0; x < m_fieldWidth; ++x) {
       loc = y * m_fieldWidth + x;
-      m_storage[loc].print();
+      std::cout << m_storage[loc];
+      //m_storage[loc].print();
       std::cout << " ";
       if ( (loc + 1) % 9 == 0) { std::cout << std::endl; } // Field Edge (Right) Return
       if ( (loc + 1) % 3 == 0 && not(loc % 9 == 8) ) { std::cout << "| "; }   // Vertical Seperators
