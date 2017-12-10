@@ -1,5 +1,6 @@
 #include "NumberSet.h"
 #include "Debug.h"
+#include <iostream>
 
 bool NumberSet::isEmpty() const
 {

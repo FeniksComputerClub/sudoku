@@ -1,6 +1,6 @@
+#include "Debug.h"
 #include "Field.h"
 #include <iostream>
-#include "Debug.h"
 
 //ReturnType Class::Function(paramType paramName) { ... };
 
@@ -10,7 +10,7 @@ Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a 
   if (DEBUG) {std::cout << "-Field Constructed" << std::endl;}
 }
 
-Field::Field(std::string s) : m_storage(m_fieldSize, NumberSet()) /*TODO*/ // FOR DEBUG PURPOSES ONLY
+Field::Field(std::string const& s) : m_storage(m_fieldSize, NumberSet()) /*TODO*/ // FOR DEBUG PURPOSES ONLY
 {
   if (DEBUG) {std::cout << "Field Constructing from string" << std::endl;}
   int foo=0; //PLACEHOLDER

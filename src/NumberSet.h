@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <bitset>
-#include <iostream>
+#include <iosfwd>
 
 class NumberSet
 {
