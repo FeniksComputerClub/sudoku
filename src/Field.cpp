@@ -7,28 +7,26 @@
 
 Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a new Vector of (x many, y's)
 {  //Constructor
-  if (DEBUG) {std::cout << "Field Constructing" << std::endl;}
-  if (DEBUG) {std::cout << "-Field Constructed" << std::endl;}
+  DoutEntering(dc::notice, "Field()");
 }
 
 Field::Field(std::string const& s) : m_storage(m_fieldSize, NumberSet()) /*TODO*/ // FOR DEBUG PURPOSES ONLY
 {
-  if (DEBUG) {std::cout << "Field Constructing from string" << std::endl;}
+  DoutEntering(dc::notice, "Field(\"" << s << "\") [this = " << (void*)this << "]");
   int foo=0; //PLACEHOLDER
   for (int i=0; i<m_fieldSize; ++i) {  //TODO MAKE A FIELD WITH THE NUMBERS IN STRING FOR TESTING PURPOSES
     foo += 1;
   }
-  if (DEBUG) {std::cout << "-Field constructed from string" << std::endl;}
 }
 
 Field::~Field()
 { //Destructor
-  if (DEBUG) {std::cout << "Field Destructing" << std::endl;}
+  DoutEntering(dc::notice, "~Field() [this = " << (void*)this << "]");
 }
 
 void Field::print() const
 {
-  if (DEBUG) {std::cout << "print" << std::endl;}
+  DoutEntering(dc::notice, "Field::print() [this = " << (void*)this << "]");
   for (int y = 0; y < m_fieldHeight; ++y) {
     for (int x = 0; x < m_fieldWidth; ++x) {
       std::cout << get2D(x,y) << " ";
@@ -37,20 +35,18 @@ void Field::print() const
     std::cout << std::endl;
     if ( (y + 1) % 3 == 0 && y + 1 != m_fieldHeight ) { std::cout << "─ ─ ─ ┼ ─ ─ ─ ┼ ─ ─ ─\n"; }   // Horizontal Seperator
   }
-  if (DEBUG) {std::cout << "-print" << std::endl;}
 }
 
 void Field::fillRand(int seed)
 {
-  if (DEBUG) {std::cout << "fillRand" << std::endl;}
+  DoutEntering(dc::notice, "Field::fillRand(" << seed << ") [this = " << (void*)this << "]");
   std::srand(seed);
   for (int i = 0; i < m_fieldSize; ++i) {
     int r = (std::rand() % 9) + 1; //+1 because else you are making zeroes possible in a sudoku (which they (usualy) aren't)
-    if (DEBUG) {std::cout << "r:" << r << std::endl;}
+    Dout(dc::notice, "r:" << r);
     m_storage[i].add(r);
-    if (DEBUG) {std::cout << r << " " << m_storage[i] << std::endl;}
+    Dout(dc::notice, r << " " << m_storage[i]);
   }
-  if (DEBUG) {std::cout << "-fillRand" << std::endl;}
 }
 
 NumberSet Field::get2D(int x, int y) const

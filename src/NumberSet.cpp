@@ -13,11 +13,10 @@ bool NumberSet::isEmpty() const
 
 void NumberSet::add(int x) //TODO rename to setActive? activate? set?
 {
+  DoutEntering(dc::notice, "NumberSet::add(" << x << ") [this = " << (void*)this << "]");
   ASSERT(1 <= x && x <= 9);
-  if (DEBUG) {std::cout << "NS: adding" << std::endl;}
   m_set[x - 1] = true;
-  if (DEBUG) {std::cout << "b:" << m_set << "\nx:" << x << std::endl;}
-  if (DEBUG) {std::cout << "-NS: added" << std::endl;}
+  Dout(dc::notice, "b:" << m_set << "; x:" << x);
 }
 
 void NumberSet::remove(int x) //TODO rename to clear? deactivate? reset?
@@ -34,7 +33,7 @@ bool NumberSet::test(int loc) const
 
 std::ostream& operator<<(std::ostream& os, NumberSet const& ns)
 {
-  if (DEBUG) {os << ns.m_set << ":";}
+  Debug(os << ns.m_set << ":");
   if (ns.isEmpty()) { // If empty
     os << '*';        // Print empty char
   } else {
@@ -50,7 +49,7 @@ std::ostream& operator<<(std::ostream& os, NumberSet const& ns)
 std::vector<int> NumberSet::getContents() const
 {
   std::vector<int> content(9, 0); // Make empty vector
-  if (DEBUG) {std::cout << m_set << ":";}
+  Dout(dc::notice, m_set << ":");
   for (unsigned int i = 0; i < m_set.size(); ++i) {
     if (m_set[i]) {   // Get "active" content (1's)
       content[i] = i + 1;
