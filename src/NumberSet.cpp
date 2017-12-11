@@ -1,5 +1,6 @@
+#include "sys.h"
+#include "debug.h"
 #include "NumberSet.h"
-#include "Debug.h"
 #include <iostream>
 
 bool NumberSet::isEmpty() const

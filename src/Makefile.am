@@ -11,7 +11,7 @@ sudoku_SOURCES = \
 	Debug.h
 
 sudoku_CXXFLAGS = -std=c++14 @LIBCWD_FLAGS@
-sudoku_LDADD = @LIBCWD_LIBS@
+sudoku_LDADD = $(top_builddir)/cwds/libcwds.la
 
 # --------------- Maintainer's Section
 
