@@ -27,7 +27,7 @@ define(CW_BUGREPORT, [])
 # and optimization flags (-O*) that which will be stripped when not required.
 define(CW_COMPILE_FLAGS, [-W -Wall -Woverloaded-virtual -Wundef -Wpointer-arith -Wwrite-strings -Winline])
 # CW_THREADS can be [no] (single-threaded), [yes] (multi-threaded) or [both] (single and multi-threaded applications).
-define(CW_THREADS, [both])
+define(CW_THREADS, [no])
 
 # Include cwm4 header.
 m4_include([cwm4/configure_ac_top.m4])
@@ -37,7 +37,7 @@ m4_include([cwm4/configure_ac_top.m4])
 #CW_DOXYGEN
 
 ### Uncomment this to add more configuration output files.
-#AC_CONFIG_FILES([src/Makefile] [sudoku.pc])
+AC_CONFIG_FILES([src/Makefile])
 
 # Include cwm4 footer.
 m4_include([cwm4/configure_ac_bottom.m4])
