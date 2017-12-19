@@ -1,8 +1,8 @@
 # Hello!
 
-In this project I hope to write a small program which can solve (simple) sudokus, and learn about ```C++``` and Object-Oriented Programming in the process
+In this project I hope to write a small program which can solve (simple) sudokus, and learn about ```C++``` and Object-Oriented Programming in the process.
 
-### Setting up.
+### Setting up:
 #### 1. Installing [libcwd](https://github.com/CarloWood/libcwd.git)
   1. #```apt install autoconf autoconf-archive automake libtool-bin libboost-all-dev``` install needed stuff in case you don't have it yet
   2. $```git clone https://github.com/CarloWood/libcwd.git``` to download
@@ -19,4 +19,4 @@ In this project I hope to write a small program which can solve (simple) sudokus
   5. $```../sudoku/configure --enable-maintainter-mode``` to configure the makefile (and other stuff)
   6. $```make``` compile the project
 
-Compiling with ```G++ 4.9.2``` standard. ```C++14```
+Compiling with ```G++ 4.9.2``` standard: ```C++14```

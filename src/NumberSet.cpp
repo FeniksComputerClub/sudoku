@@ -49,7 +49,6 @@ std::ostream& operator<<(std::ostream& os, NumberSet const& ns)
 std::vector<int> NumberSet::getContents() const
 {
   std::vector<int> content(9, 0); // Make empty vector
-  Dout(dc::notice, m_set << ":");
   for (unsigned int i = 0; i < m_set.size(); ++i) {
     if (m_set[i]) {   // Get "active" content (1's)
       content[i] = i + 1;

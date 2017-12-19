@@ -43,9 +43,7 @@ void Field::fillRand(int seed)
   std::srand(seed);
   for (int i = 0; i < m_fieldSize; ++i) {
     int r = (std::rand() % 9) + 1; //+1 because else you are making zeroes possible in a sudoku (which they (usualy) aren't)
-    Dout(dc::notice, "r:" << r);
     m_storage[i].add(r);
-    Dout(dc::notice, r << " " << m_storage[i]);
   }
 }
 
