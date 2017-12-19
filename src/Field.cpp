@@ -10,12 +10,31 @@ Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a 
   DoutEntering(dc::notice, "Field()");
 }
 
-Field::Field(std::string const& s) : m_storage(m_fieldSize, NumberSet()) /*TODO*/ // FOR DEBUG PURPOSES ONLY
+
+/*TODO*/ // Comments... @sjaak3136, do something about them.
+Field::Field(std::string const& s) : m_storage(m_fieldSize, NumberSet()) // For inputing a sudoku
 {
   DoutEntering(dc::notice, "Field(\"" << s << "\") [this = " << (void*)this << "]");
-  int foo=0; //PLACEHOLDER
-  for (int i=0; i<m_fieldSize; ++i) {  //TODO MAKE A FIELD WITH THE NUMBERS IN STRING FOR TESTING PURPOSES
-    foo += 1;
+  ASSERT(s.length() == m_fieldSize);
+  std::string allowedDigits = "123456789"; /*TODO*/ // Move this
+  /*for (auto c:s) {    // Split input s into individual 1-long-strings
+    if (allowedDigits.find(c) != std::string::npos) {            // Check if ^that^ is allowed to go into the sudoku (i.e. a number, not a spacer)
+      m_storage[*LOCATION*].add(std::stoi(c);
+    }*/
+  for (unsigned int loc = 0; loc < m_fieldSize; ++loc) {
+    if (allowedDigits.find(s[loc]) != std::string::npos) { // Check if the char at location loc of input-data s is allowed to go into the sudoku (i.e. a number, not a spacer)
+      //Dout(dc::notice, "loc:" << loc << "; s[loc]:" << s[loc] << "; type:" << typeid(s[loc]).name());
+      //Dout(dc::notice, "atoi(&(s[loc])):" << std::atoi(&(s[loc])));
+      char c = s[loc];  // This is needed because else atoi() will continue reading the string untill it hits a whitespace...
+                        // Which will result in digits that are bigger than 9 sometimes, and thus don't do well with the NumberSet.add...
+                        // Even tho atoi (to my understanding) converts a char to int, and a char can't be longer than one...
+                        // But it can continue reading from that pointer... Ah, I think I see why it does this now... 
+                        // But that still would be weird, because if you want to convert multiple digits to ints you would use stoi I'd assume...
+                        /*TODO*/ // Try doing this by substringing, maybe then it'll work, but for now I'll just use this, because I'm gonna take a break
+
+      /*TODO*/ /*Why???*/ Dout(dc::notice, "c:" << c);    // Forget what I just said... it still crashes for some reason if this is commented out...
+      m_storage[loc].add(std::atoi(&c));  // Convert input char into int, and put that into the correspoding NumberSet located at location loc
+    }
   }
 }
 
