@@ -10,7 +10,7 @@ sudoku_SOURCES = \
 	NumberSet.h \
 	Debug.h
 
-sudoku_CXXFLAGS = -std=c++14 @LIBCWD_FLAGS@
+sudoku_CXXFLAGS = -std=c++11 @LIBCWD_FLAGS@
 sudoku_LDADD = $(top_builddir)/cwds/libcwds.la
 
 # --------------- Maintainer's Section
