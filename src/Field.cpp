@@ -66,6 +66,16 @@ void Field::fillRand(int seed)
   }
 }
 
+std::vector<NumberSet*> Field::getRow(Direction dir) { //TODO add X, Y
+  DoutEntering(dc::notice, "Field::getRow(" << dir << ") [this = " << (void*)this << "]");
+  std::vector<NumberSet*> row(m_fieldWidth); //May throw unexpected behavior/crash due to dead pointers 
+  int dir_offset = (dir == horizontal) ? 1 : 9;
+  for (int i = 0; i < m_fieldWidth; ++i) {
+    row[i] = &m_storage[i * dir_offset];
+  }
+  return row;
+}
+
 NumberSet Field::get2D(int x, int y) const
 {
   return m_storage[y * m_fieldWidth + x];

@@ -8,7 +8,9 @@ sudoku_SOURCES = \
 	Field.h \
 	NumberSet.cpp \
 	NumberSet.h \
-	Debug.h
+	Debug.h \
+	Direction.h \
+	Direction.cpp
 
 sudoku_CXXFLAGS = -std=c++11 @LIBCWD_FLAGS@
 sudoku_LDADD = $(top_builddir)/cwds/libcwds.la

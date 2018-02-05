@@ -1,6 +1,7 @@
 #ifndef FIELD_H
 #define FIELD_H
 
+#include "Direction.h"
 #include "NumberSet.h"
 #include <vector>
 #include <bitset>
@@ -29,6 +30,7 @@ class Field
   void fillRand(int seed);
 
   // Accessors.
+  std::vector<NumberSet*> getRow(Direction direction);
   bool isLegal() const; //TODO test to see if the current state of the Field is allowed or is unacceptable
   NumberSet get2D(int x, int y) const; // Used to interface with the (1D vector) m_storage as if it were 2D /*TODO*/ maybe return pointers so it can be used to interface 2 way
 
