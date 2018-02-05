@@ -4,3 +4,6 @@
 [submodule "cwds"]
 	path = cwds
 	url = https://github.com/CarloWood/cwds.git
+[submodule "utils"]
+	path = utils
+	url = https://github.com/CarloWood/ai-utils.git

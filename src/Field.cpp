@@ -12,20 +12,20 @@ Field::Field() : m_storage(m_fieldSize, NumberSet()) //Set private:storage to a 
 
 
 /*TODO*/ // Comments... @sjaak3136, do something about them.
-Field::Field(std::string const& s) : m_storage(m_fieldSize, NumberSet()) // For inputing a sudoku
+Field::Field(std::string const& contents) : m_storage(m_fieldSize, NumberSet()) // For inputing a sudoku
 {
-  DoutEntering(dc::notice, "Field(\"" << s << "\") [this = " << (void*)this << "]");
-  ASSERT(s.length() == m_fieldSize);
+  DoutEntering(dc::notice, "Field(\"" << contents << "\") [this = " << (void*)this << "]");
+  ASSERT(contents.length() == m_fieldSize);
   std::string allowedDigits = "123456789"; /*TODO*/ // Move this
   /*for (auto c:s) {    // Split input s into individual 1-long-strings
     if (allowedDigits.find(c) != std::string::npos) {            // Check if ^that^ is allowed to go into the sudoku (i.e. a number, not a spacer)
       m_storage[*LOCATION*].add(std::stoi(c);
     }*/
   for (unsigned int loc = 0; loc < m_fieldSize; ++loc) {
-    if (allowedDigits.find(s[loc]) != std::string::npos) { // Check if the char at location loc of input-data s is allowed to go into the sudoku (i.e. a number, not a spacer)
-      //Dout(dc::notice, "loc:" << loc << "; s[loc]:" << s[loc] << "; type:" << typeid(s[loc]).name());
-      //Dout(dc::notice, "atoi(&(s[loc])):" << std::atoi(&(s[loc])));
-      char c = s[loc];  // This is needed because else atoi() will continue reading the string untill it hits a whitespace...
+    if (allowedDigits.find(contents[loc]) != std::string::npos) { // Check if the char at location loc of input-data contents is allowed to go into the sudoku (i.e. a number, not a spacer)
+      //Dout(dc::notice, "loc:" << loc << "; contents[loc]:" << contents[loc] << "; type:" << typeid(contents[loc]).name());
+      //Dout(dc::notice, "atoi(&(contents[loc])):" << std::atoi(&(contents[loc])));
+      char c = contents[loc];  // This is needed because else atoi() will continue reading the string untill it hits a whitespace...
                         // Which will result in digits that are bigger than 9 sometimes, and thus don't do well with the NumberSet.add...
                         // Even tho atoi (to my understanding) converts a char to int, and a char can't be longer than one...
                         // But it can continue reading from that pointer... Ah, I think I see why it does this now... 
