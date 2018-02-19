@@ -2,6 +2,11 @@
 #include <iostream>
 
 std::ostream& operator<<(std::ostream& os, Direction const& dir) {
-  os << dir.i; //TODO hor or vert?
+  if (dir.i == horizontal.i) {
+    os << "Horizontal";
+  }
+  if (dir.i == vertical.i) {
+    os << "Vertical";
+  }
   return os;
 }
